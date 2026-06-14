@@ -1,0 +1,156 @@
+<!-- footer css -->
+<style>
+    footer {
+        color: #ffffff;
+        background-color: #181C24;
+        padding-bottom: 2vw;
+    }
+
+    .footer-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-items: center;
+    }
+
+    .footer-part {
+        width: 20vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2vh;
+        margin-top: 2vw;
+    }
+
+    .footer-content-header {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .footer-content-description {
+        display: flex;
+        flex-direction: column;
+        width: 15vw;
+
+    }
+
+    .footer-content-description a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .footer-content-description div {
+        word-break: break-word;
+    }
+
+    .footer-content-follow {
+        display: flex;
+        flex-direction: row;
+        gap: 2vw;
+        justify-content: center;
+    }
+
+    .follow {
+        height: 1.6vw;
+        width: 1.6vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #d9d9d9;
+        border-radius: 50%;
+    }
+
+    .follow-logo {
+        width: 1.6vw;
+        display: block;
+    }
+
+    hr {
+        background-color: #1F2937;
+        border: none;
+        height: 2px;
+        width: 90vw;
+        margin: 2vw auto;
+    }
+
+    .copyright {
+        text-align: center;
+    }
+
+    @media only screen and (max-width : 700px) {
+        .footer-area {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-part {
+            width: 40vw;
+        }
+
+        .footer-content-header {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .footer-content-description {
+            width: 30vw;
+        }
+
+        .footer-content-follow {
+            gap: 5vw;
+        }
+
+        .follow a img {
+            height: 3vw;
+            width: 3vw;
+            display: block;
+        }
+
+        .follow {
+            height: 3vw;
+            width: 3vw;
+            display: block;
+        }
+    }
+</style>
+
+<footer>
+    <div class="footer-area">
+        <div class="footer-part">
+            <div class="footer-content-header">CampusConnect</div>
+            <div class="footer-content-description">Connecting students across campus for a better college
+                experience.</div>
+        </div>
+        <div class="footer-part">
+            <div class="footer-content-header">Quick Links</div>
+            <div class="footer-content-description">
+                <a href="report lost & found.html">Report Lost Item</a>
+                <a href="Buy & sell.html">Browse Instruments</a>
+                <a href="Complaint & Suggestion.html">Submit Feedback</a>
+            </div>
+        </div>
+        <div class="footer-part">
+            <div class="footer-content-header">Contact</div>
+            <div class="footer-content-description">
+                <div>campusconnect.msubaroda@gmail.com</div>
+                <div>+91 79848 37800</div>
+            </div>
+        </div>
+        <div class="footer-part">
+            <div class="footer-content-header">Get in Touch</div>
+            <div class="footer-content-description footer-content-follow">
+                <div class="follow">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=campusconnect.msubaroda@gmail.com"
+                        target="_blank">
+                        <img src="media/images/email-logo.png" alt="email" class="follow-logo">
+                    </a>
+                </div>
+                <div class="follow">
+                    <a href="https://wa.me/7984837800" target="_blank">
+                        <img src="media/images/whatsapp-logo.png" alt="whatsapp" class="follow-logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="copyright">&copy; 2026 CampusConnect. All rights reserved.</div>
+</footer>

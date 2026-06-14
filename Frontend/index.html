@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMPUS CONNECT</title>
+    <link rel="shortcut icon" href="media/images/logo.jpg" type="image/x-icon">
+
+    <!-- font import css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <!-- content css -->
+    <style>
+        /* nav link show */
+        #desktop-nav>#desktop-nav-section>ul>li:nth-child(1) a {
+            color: #2563EB;
+        }
+
+        .content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .content h1 {
+            font-size: 5rem;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            color: white;
+        }
+
+        .content p {
+            font-size: 1.7rem;
+            width: 80vw;
+            margin: auto;
+            color: white;
+        }
+
+        .container-box {
+            width: 80vw;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            gap: 2vw;
+        }
+
+        .container-box-item {
+            background-color: #d9d9d9;
+            padding: 1em;
+            width: 20em;
+            position: relative;
+            transition: 0.4s ease;
+        }
+
+        .container-box-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .container-box-item-logo {
+            height: 9vw;
+            transition: .3s;
+        }
+
+        .container-box-item-logo:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+
+        .container-box-item-name {
+            font-size: large;
+            font-weight: 600;
+            padding: 1vh 0;
+        }
+
+        .container-box-item-name a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .container-box-item-description {
+            padding-bottom: 3vh;
+        }
+
+        /* Lost & found section----------------------------------------------------------------------------------*/
+        .lost-found {
+            background-color: #d9d9d9;
+            width: 80vw;
+            margin: 5vh auto;
+            padding: 5vh 0;
+        }
+
+        .lost-found-content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .lost-found-content h3 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .lost-found-content p {
+            width: 80vw;
+            margin: auto;
+        }
+
+        .lost-found-container-box-item {
+            min-height: 20vh;
+        }
+
+        .card-display-colour {
+            background-color: #37969e;
+        }
+
+        /* Buy & sell section--------------------------------------------------------------------------------------- */
+        .buy-sell {
+            margin: 5vh auto;
+        }
+
+        .buy-sell-content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .buy-sell-content h3 {
+            font-size: 4rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .buy-sell-content p {
+            width: 70vw;
+            color: white;
+            margin: auto;
+        }
+
+        .item-details {
+            position: absolute;
+            bottom: 1vh;
+            left: 1vw;
+        }
+
+        .buy-sell-card {
+            min-height: 20vh;
+        }
+
+        .container-box-item-image {
+            height: 20vh;
+            display: block;
+            margin: auto;
+            transition: .3s;
+        }
+
+        .container-box-item-image:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+
+        @media only screen and (orientation: portrait) {
+            .buy-sell-card {
+                min-height: 13vh;
+            }
+        }
+
+        @media only screen and (max-width : 700px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 0.7rem;
+            }
+
+            .container-box {
+                flex-direction: column;
+                gap: 2vw;
+                align-items: center;
+            }
+
+            .container-box-item {
+                width: 0em;
+                min-width: 15rem;
+            }
+
+            .container-box-item-logo {
+                height: 17vw;
+            }
+
+            .container-box-item-description {
+                font-size: 0.7rem;
+            }
+
+            /* Lost & found section----------------------------------------------------------------------------------*/
+            .lost-found {
+                padding: 1vw 5vw 5vw 5vw;
+            }
+
+            .lost-found-content h3 {
+                font-size: 2.3rem;
+            }
+
+            .lost-found-container-box-item {
+                min-height: 20vh;
+            }
+
+            .item-details {
+                bottom: 2vh;
+                left: 4vw;
+            }
+
+            /* Buy & sell section--------------------------------------------------------------------------------------- */
+            .buy-sell-content h3 {
+                font-size: 2.3rem;
+            }
+
+            .buy-sell-card {
+                min-height: 20vh;
+            }
+        }
+    </style>
+
+    <script src="load_header.js"></script>
+
+</head>
+
+<body>
+    <header></header>
+
+    <div class="content">
+        <h1>CAMPUS COMMUNITY HUB</h1>
+        <p>Connect, find, Share within your campus community. Lost items, student instrument Buy & Sell, and feedback
+            portal - all in one place</p>
+    </div>
+
+    <div class="container-box">
+        <div class="container-box-item">
+            <img src="media/images/lost_&_found_hub.png" alt="lost & found logo" class="container-box-item-logo">
+            <div class="container-box-item-name"><a href="lost & found.html">Lost & Found</a></div>
+            <div class="container-box-item-description">Quickly report and search for lost items with location based
+                verification
+                and smart tagging</div>
+        </div>
+        <div class="container-box-item">
+            <img src="media/images/Buy_&_Sell_Hub.png" alt="buy & sell logo" class="container-box-item-logo">
+            <div class="container-box-item-name"><a href="Buy & sell.html">Buy & Sell Material</a></div>
+            <div class="container-box-item-description">Buy and sell textbooks, instruments, and college essentials
+                directly with
+                fellow students.</div>
+        </div>
+        <div class="container-box-item">
+            <img src="media/images/Complaint_&_Suggestions_Portal.png" alt="complaint & suggestions logo"
+                class="container-box-item-logo">
+            <div class="container-box-item-name"><a href="Complaint & Suggestion.html">Complaint Portal</a></div>
+            <div class="container-box-item-description">share suggestions and report campus issues to help improve your
+                college
+                experience.</div>
+        </div>
+    </div>
+
+    <div class="lost-found">
+        <div class="lost-found-content">
+            <h3>Lost & Found Items</h3>
+            <p>Recent items reported by students in your campus community</p>
+        </div>
+        <div class="container-box lost-found-display-box"></div>
+    </div>
+
+    <div class="buy-sell">
+        <div class="buy-sell-content">
+            <h3>Campus Buy & Sell</h3>
+            <p>Buy and sell college essentials directly with fellow students</p>
+        </div>
+        <div class="container-box buy-sell-display-box"></div>
+    </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="auth.js"></script>
+    <script>
+        protectPage();
+
+        const role = localStorage.getItem("userRole");
+        const token = localStorage.getItem("jwtToken");
+
+
+        let allComplaints = [];
+        let visible_lost_found = 3; // how many show
+
+        async function loadComplaints() {
+            const res = await fetch("https://campus-connect-msu.runasp.net/api/lostfound", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+            const data = await res.json();
+
+            allComplaints = data; // store all
+            renderComplaints();
+        }
+
+        function renderComplaints() {
+            const lost_found_box = document.querySelector(".lost-found-display-box");
+
+            lost_found_box.innerHTML = "";
+
+            const visibleItemslost_found = allComplaints.slice(0, visible_lost_found);
+
+            visibleItemslost_found.forEach(item => {
+
+                const card = document.createElement("div");
+                card.className = "container-box-item Lost-found-container-box-item card-display-colour";
+                card.dataset.id = item.item_id;
+
+                const blurClass = item.status === "Found" ? "found-img" : "";
+
+                card.innerHTML = `                    
+                        <img src="https://campus-connect-msu.runasp.net/${item.image_path}" alt="lost & found logo" class="container-box-item-logo  ${item.status === 'Found' ? 'found-img' : ''}" onclick="fullscreen(this)">
+                        <div class="container-box-item-name">${item.item_name}</div>
+                        <div class="container-box-item-description">${item.description}</div>
+                        <div class="item-details">${item.status}</div>`;
+                lost_found_box.appendChild(card);
+
+            });
+        }
+
+        function fullscreen(img) {
+            img.requestFullscreen();
+        }
+
+        loadComplaints();
+
+        let allitems = [];
+        let visibleitem = 4; // how many show per click
+
+        async function loaditems() {
+            const res = await fetch("https://campus-connect-msu.runasp.net/api/buysell", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+            const data = await res.json();
+
+            allitems = data; // store all
+            renderitems();
+        }
+
+        function renderitems() {
+            const containerbox = document.querySelector(".buy-sell-display-box");
+            containerbox.innerHTML = "";
+
+            const visiblecard = allitems.slice(0, visibleitem);
+
+            visiblecard.forEach(item => {
+
+                const card = document.createElement("div");
+                card.className = "container-box-item card-display-colour buy-sell-card";
+                card.dataset.id = item.product_id;
+
+
+                // if (item.status === "Found") {
+                //     document.getElementById("blur").classList.add("found-img")
+                // }
+
+                card.innerHTML = `
+                    <img src="https://campus-connect-msu.runasp.net/${item.image_path}" alt="item image" class="container-box-item-image" id="blur" onclick = "fullscreen(this)">
+                    <div class="container-box-item-name">${item.item_title}</div>
+                    <div class="container-box-item-description">${item.description}</div>
+                    <div class="item-price">₹${item.price}</div>`;
+
+                containerbox.appendChild(card);
+            });
+        }
+
+        loaditems();
+    </script>
+</body>
+
+</html>

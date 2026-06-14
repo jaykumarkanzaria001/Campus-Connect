@@ -1,0 +1,246 @@
+<!-- header css -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+    }
+
+    header {
+        margin: 0.8vw;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+    }
+
+    nav ul li a.link::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: #0f172a;
+        /* background: #38bdf8; */
+        transition: 0.3s;
+    }
+
+    nav ul li a.link:hover::after {
+        width: 100%;
+    }
+
+    .btn {
+        display: block;
+        padding: 15px 40px;
+        border-radius: 30px;
+        background: #172133;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(108, 99, 255, 0.5);
+    }
+
+    .btn a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /* desktop nav style ---------------------------------------------------------------------*/
+    #desktop-nav {
+        min-height: 10vh;
+        border-radius: 35px;
+        background-color: #aeaeae;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    /* logo-selection ----------------------------------------------------------------------*/
+    #desktop-nav-logo {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #desktop-nav>#desktop-logo-section {
+        width: 40vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.5vw;
+        font-size: clamp(1rem, 2vw, 2rem);
+        font-weight: 600;
+        margin-left: 3vw;
+    }
+
+    /* nav-selection ----------------------------------------------------------------------*/
+    #desktop-nav>#desktop-nav-section>ul {
+        list-style-type: none;
+        width: 50vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #desktop-nav>#desktop-nav-section>ul>li>a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: clamp(0.1rem, 2vw, 1.2rem);
+        position: relative;
+        transition: 0.3s;
+    }
+
+    #desktop-nav>#desktop-nav-section>ul>li:nth-child(5) a {
+        color: white;
+        background-color: #2563EB;
+        border-radius: 50px;
+        padding: 0.6em;
+    }
+
+
+
+    /* mobile nav style ----------------------------------------------------------------------*/
+    #mobile-nav {
+        min-height: 20vh;
+        border-radius: 15px;
+        background-color: #aeaeae;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 2vh;
+    }
+
+
+    /* logo-selection ----------------------------------------------------------------------*/
+    #mobile-nav-logo {
+        height: 6rem;
+        width: 6rem;
+    }
+
+    #mobile-nav>#mobile-logo-section {
+        width: 40vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.5vw;
+        font-size: clamp(0.2rem, 3vw, 2rem);
+        font-weight: 600;
+        margin-left: 3vw;
+    }
+
+    /* nav-selection ----------------------------------------------------------------------*/
+    #mobile-nav>#mobile-nav-section>div>img {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 4vw;
+    }
+
+    #mobile-nav>#mobile-nav-section>ul {
+        list-style-type: none;
+        width: 40vw;
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #mobile-nav>#mobile-nav-section>ul>li {
+        position: relative;
+    }
+
+    #mobile-nav>#mobile-nav-section>ul>li>a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: clamp(0.4rem, 3.8vw, 1.2rem);
+        display: block;
+    }
+
+    #mobile-nav>#mobile-nav-section>ul>li>a.link::after {
+        content: "";
+        width: 0%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: #0f172a;
+        /* background: #38bdf8; */
+        transition: 0.3s;
+    }
+
+
+    #mobile-nav>#mobile-nav-section>ul>li>a.link:hover::after {
+        width: 100%;
+    }
+
+    #mobile-nav>#mobile-nav-section>ul>li:nth-child(5) a {
+        color: white;
+        background-color: #2563EB;
+        border-radius: 50px;
+        padding: 0.6em;
+    }
+
+
+    @media only screen and (max-width : 500px) {
+        #desktop-nav {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width : 500px) {
+        #mobile-nav {
+            display: none;
+        }
+    }
+</style>
+
+<Header>
+    <nav id="desktop-nav">
+        <div id="desktop-logo-section">
+            <img src="media/images/logo.jpg" alt="Logo" id="desktop-nav-logo">
+            <span>CAMPUS CONNECT</span>
+        </div>
+        <div id="desktop-nav-section">
+            <ul>
+                <li><a href="index.html" class="link">Home</a></li>
+                <li><a href="lost & found.html" class="link">Lost & Found</a></li>
+                <li><a href="Buy & sell.html" class="link">Buy & Sell</a></li>
+                <li><a href="Complaint & Suggestion.html" class="link">Complaint</a></li>
+                <li><a href="Login.html" onclick="logout()" class="btn">Sign Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="mobile-nav">
+        <div id="mobile-logo-section">
+            <img src="media/images/logo.jpg" alt="Logo" id="mobile-nav-logo">
+            <span>CAMPUS CONNECT</span>
+        </div>
+        <div id="mobile-nav-section">
+            <div>
+                <img src="media/images/hamburger.png" alt="button" onclick="showmenu()">
+            </div>
+        </div>
+    </nav>
+</Header>
+
+<script>
+    function showmenu() {
+        document.querySelector("#mobile-nav-section").innerHTML = `<ul>
+                    <li><a href="" class="link">Home</a></li>
+                    <li><a href="" class="link">Lost & Found</a></li>
+                    <li><a href="" class="link">Buy & Sell</a></li>
+                    <li><a href="" class="link">Complaint</a></li>
+                    <li><a href="" class="btn">Sign Out</a></li>
+                </ul>`;
+    }
+</script>

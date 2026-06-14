@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="media/images/logo.jpg" type="image/x-icon">
+
+    <!-- font import css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            scroll-behavior: smooth;
+        }
+    </style>
+    <!-- header css -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        header {
+            margin: 0.8vw;
+        }
+
+        /* desktop nav style ---------------------------------------------------------------------*/
+        #desktop-nav {
+            min-height: 10vh;
+            border-radius: 35px;
+            background-color: #aeaeae;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        /* logo-selection ----------------------------------------------------------------------*/
+        #desktop-nav-logo {
+            height: 2.8em;
+            width: 2.8em;
+        }
+
+        #desktop-nav>#desktop-logo-section {
+            width: 40vw;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.5vw;
+            font-size: clamp(1rem, 2vw, 2rem);
+            font-weight: 600;
+            margin-left: 3vw;
+        }
+
+        /* mobile nav style ----------------------------------------------------------------------*/
+        #mobile-nav {
+            min-height: 10vh;
+            border-radius: 15px;
+            background-color: #aeaeae;
+            display: flex;
+            align-items: center;
+            padding: 2vh 0;
+        }
+
+
+        /* logo-selection ----------------------------------------------------------------------*/
+        #mobile-nav-logo {
+            height: 6rem;
+            width: 6rem;
+        }
+
+        #mobile-nav>#mobile-logo-section {
+            width: 40vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5vw;
+            font-size: clamp(0.2rem, 4vw, 2rem);
+            font-weight: 600;
+            margin-left: 3vw;
+        }
+
+        @media only screen and (max-width : 500px) {
+            #desktop-nav {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width : 500px) {
+            #mobile-nav {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Login Box css -->
+    <style>
+        .login-box {
+            width: 40vw;
+            margin: 10vh auto;
+            margin-bottom: 14vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box h2 {
+            font-size: 2.5em;
+            margin: 2vh 0;
+        }
+
+        .login-box p {
+            font-size: 1.5em;
+            margin: 1vh 0;
+            text-align: center;
+        }
+
+        .form {
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+
+        .form input,
+        .form select {
+            padding: 10px;
+            width: 35vw;
+            margin: 10px 0;
+            font-size: 1em;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.5);
+        }
+
+        .submit-btn {
+            width: 20vw;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 50px;
+            margin: 2vh auto;
+        }
+
+        .submit-btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media only screen and (max-width:700px) {
+            .login-box {
+                width: 80vw;
+                margin: 5vh auto;
+            }
+
+            .login-box h2 {
+                font-size: 2em;
+                margin: 2vh 0;
+            }
+
+            .login-box p {
+                font-size: 1.1em;
+            }
+
+            .form input,
+            .form select {
+                width: 70vw;
+                box-sizing: border-box;
+            }
+
+        }
+    </style>
+    <!-- footer css -->
+    <style>
+        footer {
+            color: #ffffff;
+            background-color: #181C24;
+            padding-bottom: 2vw;
+        }
+
+        .footer-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-items: center;
+        }
+
+        .footer-part {
+            width: 20vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 2vh;
+            margin-top: 2vw;
+        }
+
+        .footer-content-header {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .footer-content-description {
+            display: flex;
+            flex-direction: column;
+            width: 15vw;
+
+        }
+
+        .footer-content-description a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .footer-content-follow {
+            display: flex;
+            flex-direction: row;
+            gap: 2vw;
+            justify-content: center;
+        }
+
+        .follow {
+            height: 1.6vw;
+            width: 1.6vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #d9d9d9;
+            border-radius: 50%;
+        }
+
+        .follow-logo {
+            width: 1.6vw;
+            display: block;
+        }
+
+        hr {
+            background-color: #1F2937;
+            border: none;
+            height: 2px;
+            width: 90vw;
+            margin: 2vw auto;
+        }
+
+        .copyright {
+            text-align: center;
+        }
+
+        @media only screen and (max-width : 700px) {
+            .footer-area {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-part {
+                width: 40vw;
+            }
+
+            .footer-content-header {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            .footer-content-description {
+                width: 30vw;
+            }
+
+            .footer-content-follow {
+                gap: 5vw;
+            }
+
+            .follow a img {
+                height: 3vw;
+                width: 3vw;
+                display: block;
+            }
+
+            .follow {
+                height: 3vw;
+                width: 3vw;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <Header>
+        <nav id="desktop-nav">
+            <div id="desktop-logo-section">
+                <img src="media/images/logo.jpg" alt="Logo" id="desktop-nav-logo">
+                <span>CAMPUS CONNECT</span>
+            </div>
+        </nav>
+        <nav id="mobile-nav">
+            <div id="mobile-logo-section">
+                <img src="media/images/logo.jpg" alt="Logo" id="mobile-nav-logo">
+                <span>CAMPUS CONNECT</span>
+            </div>
+        </nav>
+    </Header>
+
+    <div class="login-box">
+        <h2>Welcome</h2>
+        <p>sign in to your Campus Connect Account</p>
+        <h2>Login</h2>
+        <form id="loginForm" class="form">
+            <label for="username">Username :</label>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <label for="password">Password :</label>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <label for="role">Role :</label>
+            <select name="role" id="role">
+                <option value="" hidden selected>Select Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Student">Student</option>
+            </select>
+            <button type="submit" class="btn submit-btn">Login</button>
+        </form>
+        <div id="error" class="error"></div>
+    </div>
+
+    <footer>
+        <div class="footer-area">
+            <div class="footer-part">
+                <div class="footer-content-header">CampusConnect</div>
+                <div class="footer-content-description">Connecting students across campus for a better college
+                    experience.</div>
+            </div>
+            <div class="footer-part">
+                <div class="footer-content-header">Quick Links</div>
+                <div class="footer-content-description">
+                    <a href="Login.html" onclick="loginWarning()">Report Lost Item</a>
+                    <a href="Login.html" onclick="loginWarning()">Browse Instruments</a>
+                    <a href="Login.html" onclick="loginWarning()">Submit Feedback</a>
+                </div>
+            </div>
+            <div class="footer-part">
+                <div class="footer-content-header">Contact</div>
+                <div class="footer-content-description">
+                    <div>campusconnect.msubaroda@gmail.com</div>
+                    <div>+91 79848 37800</div>
+                </div>
+            </div>
+            <div class="footer-part">
+                <div class="footer-content-header">Follow Us</div>
+                <div class="footer-content-description footer-content-follow">
+                    <div class="follow">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=campusconnect.msubaroda@gmail.com"
+                            target="_blank">
+                            <img src="media/images/email-logo.png" alt="email" class="follow-logo">
+                        </a>
+                    </div>
+                    <div class="follow">
+                        <a href="https://wa.me/7984837800" target="_blank">
+                            <img src="media/images/whatsapp-logo.png" alt="whatsapp" class="follow-logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="copyright">&copy; 2026 CampusConnect. All rights reserved.</div>
+    </footer>
+
+    <script>
+        const API_URL = "https://campus-connect-msu.runasp.net/api/userAPI/signin";
+
+        // ====================== LOGIN ======================
+        document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const user_name = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+            const errorEl = document.getElementById("error");
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ user_name, password, role })
+                });
+
+                if (!response.ok) {
+                    const msg = await response.text();
+                    throw new Error(msg);
+                }
+
+                const data = await response.json();
+
+                // STORE JWT TOKEN
+                localStorage.setItem("jwtToken", data.token);
+                localStorage.setItem("userRole", data.role);
+
+                // REDIRECT BASED ON ROLE
+                if (data.role === "Admin") {
+                    window.location.href = "index.html";
+                    errorEl.textContent = "Login sucessfully ";
+                } else {
+                    window.location.href = "index.html";
+                }
+
+            } catch (err) {
+                errorEl.textContent = err.message || "Login failed";
+            }
+        });
+
+        // ====================== AUTH GUARD ======================
+        function isAuthenticated() {
+            const token = localStorage.getItem("jwtToken");
+            if (!token) return false;
+
+            // Optional: JWT expiry check
+            const payload = JSON.parse(atob(token.split(".")[1]));
+            const exp = payload.exp * 1000;
+
+            if (Date.now() > exp) {
+                logout();
+                return false;
+            }
+
+            return true;
+        }
+
+        // ====================== PROTECT PAGE ======================
+        function protectPage() {
+            if (isAuthenticated()) {
+                window.location.href = "index.html";
+            }
+        }
+
+        // ====================== LOGOUT ======================
+        function logout() {
+            localStorage.removeItem("jwtToken");
+            localStorage.removeItem("userRole");
+            window.location.href = "login.html";
+        }
+
+        function loginWarning() {
+            alert("Login to access links !!!");
+        }
+    </script>
+
+</body>
+
+</html>

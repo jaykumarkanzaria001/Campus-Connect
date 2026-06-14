@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found Hub</title>
+    <link rel="shortcut icon" href="media/images/logo.jpg" type="image/x-icon">
+
+    <!-- font import css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            scroll-behavior: smooth;
+        }
+    </style>
+    <!-- content css -->
+    <style>
+        /* nav link show */
+        #desktop-nav>#desktop-nav-section>ul>li:nth-child(2) a {
+            color: #2563EB;
+        }
+
+        .content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .content h1 {
+            font-size: 5rem;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            color: white;
+        }
+
+        .content p,
+        .lost-found-items p {
+            font-size: 1.7rem;
+            width: 80vw;
+            margin: auto;
+            color: white;
+        }
+
+        .lost-found-button {
+            display: block;
+            margin: 5vh auto;
+        }
+
+        .container-box {
+            width: 80vw;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2vw;
+        }
+
+        .container-box-item {
+            background-color: #d9d9d9;
+            padding: 1em;
+            width: 20em;
+            position: relative;
+            transition: 0.4s ease;
+        }
+
+        .container-box-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .container-box-item-logo {
+            height: 9vw;
+            transition: .3s;
+        }
+
+        .container-box-item-logo:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+        .container-box-item-name {
+            font-size: large;
+            font-weight: 600;
+            padding: 1vh 0;
+        }
+
+        .container-box-item-description {
+            padding-bottom: 3vh;
+        }
+
+        /* Lost & found section----------------------------------------------------------------------------------*/
+        .lost-found-items {
+            width: 80vw;
+            margin: 5vh auto;
+            padding: 5vh 0;
+        }
+
+        .lost-found-content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .lost-found-content h3 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .lost-found-content p {
+            width: 80vw;
+            margin: auto;
+        }
+
+        .Lost-found-container-box-item {
+            min-height: 20vh;
+        }
+
+        .card-display-colour {
+            background-color: #37969e;
+        }
+
+        .see-more {
+            display: block;
+            margin: 10vh auto 0;
+            width: 30vw;
+        }
+
+        .popup-btn {
+            margin: 2vh auto;
+            display: block;
+        }
+
+        .found-img {
+            filter: blur(5px);
+        }
+
+        @media only screen and (max-width : 700px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 0.7rem;
+            }
+
+            .container-box {
+                grid-template-columns: 1fr;
+                gap: 2vw;
+                justify-items: center;
+            }
+
+            .container-box-item {
+                width: 0em;
+                min-width: 15rem;
+            }
+
+            .container-box-item-logo {
+                height: 17vw;
+            }
+
+            .container-box-item-description {
+                font-size: 0.7rem;
+            }
+
+            /* Lost & found section----------------------------------------------------------------------------------*/
+            .lost-found-items {
+                padding: 1vw 5vw 5vw 5vw;
+            }
+
+            .lost-found-content h3 {
+                font-size: 2.3rem;
+            }
+
+            .Lost-found-container-box-item {
+                min-height: 20vh;
+            }
+
+            .item-details {
+                bottom: 2vh;
+                left: 4vw;
+            }
+
+            .see-more {
+                width: 50vw;
+            }
+        }
+    </style>
+    <!-- popup css -->
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-box {
+            background: white;
+            width: 360px;
+            margin: 6% auto;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 24px;
+            color: black;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .popup-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: .3s;
+        }
+    </style>
+
+    <script src="load_header.js"></script>
+
+</head>
+
+<body>
+    <Header></Header>
+
+    <div class="content">
+        <h1>Lost & Found Hub</h1>
+        <p>Focused on your campus community - report lost or found items, browse recent posts, and help reunite
+            belongings with their owners.</p>
+    </div>
+    <div class="button">
+        <button class="btn lost-found-button" id="report-item-btn"><a href="report lost & found.html">Report Lost & Found item</a></button>
+    </div>
+    <div class="lost-found-items">
+        <p>Lost items</p>
+        <hr>
+        <div class="container-box lost-container-box"></div>
+        <button class="btn see-more" id="lostBtn" onclick="loadmorelost()">See More &#709;</button>
+    </div>
+    <div class="lost-found-items">
+        <p>Founded items</p>
+        <hr>
+        <div class="container-box found-container-box"></div>
+        <button class="btn see-more" id="foundBtn" onclick="loadmorefound()">See More &#709;</button>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-box">
+
+            <span class="close" onclick="closePopup()">&times;</span>
+
+            <img id="p_image" class="popup-img" onclick="fullscreen(this)">
+
+            <h2 id="p_item"></h2>
+
+            <p><b>Category:</b> <span id="p_category"></span></p>
+            <p><b>Description:</b> <span id="p_desc"></span></p>
+            <p><b>Date:</b> <span id="p_date"></span></p>
+            <p><b>Location:</b> <span id="p_location"></span></p>
+            <p><b>Contact:</b> <span id="p_contact"></span></p>
+
+        </div>
+    </div>
+    <footer></footer>
+
+
+    <script src="auth.js"></script>
+    <script>
+        protectPage();
+
+        // admin role hide
+        const role = localStorage.getItem("userRole");
+        const token = localStorage.getItem("jwtToken");
+
+        const report_btn = document.getElementById("report-item-btn");
+
+        if (role === "Admin") {
+            report_btn.style.display = "none";
+        }
+
+        // load item function
+        let allComplaints = [];
+        let visiblelost = 3; // how many show per click
+        let visiblefound = 3; // how many show per click
+
+        async function loaditems() {
+            const res = await fetch("https://campus-connect-msu.runasp.net/api/lostfound", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+            const data = await res.json();
+
+            allComplaints = data; // store all
+            renderitems();
+        }
+
+        function renderitems() {
+            const lostbox = document.querySelector(".lost-container-box");
+            const foundbox = document.querySelector(".found-container-box");
+            const lostBtn = document.getElementById("lostBtn");
+            const foundBtn = document.getElementById("foundBtn");
+
+            lostbox.innerHTML = "";
+            foundbox.innerHTML = "";
+
+            const lostItems = allComplaints.filter(item =>
+                item.status && item.status.toLowerCase() === "lost"
+            );
+            const foundItems = allComplaints.filter(item =>
+                item.status && item.status.toLowerCase() === "found"
+            );
+            const visibleItemslost = lostItems.slice(0, visiblelost);
+            const visibleItemsfound = foundItems.slice(0, visiblefound);
+
+            visibleItemslost.forEach(item => {
+
+                const card = document.createElement("div");
+                card.className = "container-box-item Lost-found-container-box-item card-display-colour";
+                card.dataset.id = item.item_id;
+
+
+                card.innerHTML = `                    
+                        <img src="https://campus-connect-msu.runasp.net/${item.image_path}" alt="lost & found logo" class="container-box-item-logo" onclick="fullscreen(this)">
+                        <div class="container-box-item-name">${item.item_name}</div>
+                        <div class="container-box-item-description">${item.description}</div>
+                        <div class="item-details">${item.status}</div>
+                        <button class="btn popup-btn" onclick='openPopup(${JSON.stringify(item)})'>see details</button>`;
+                lostbox.appendChild(card);
+            });
+
+            visibleItemsfound.forEach(item => {
+
+                const card = document.createElement("div");
+                card.className = "container-box-item Lost-found-container-box-item card-display-colour";
+                card.dataset.id = item.item_id;
+
+
+                card.innerHTML = `                    
+                        <img src="https://campus-connect-msu.runasp.net/${item.image_path}" alt="lost & found logo" class="container-box-item-logo found-img" onclick="fullscreen(this)">
+                        <div class="container-box-item-name">${item.item_name}</div>
+                        <div class="container-box-item-description">${item.description}</div>
+                        <div class="item-details">${item.status}</div>
+                        <button class="btn popup-btn" onclick='openPopup(${JSON.stringify(item)})'>see details</button>`;
+                foundbox.appendChild(card);
+            });
+
+
+            if (visiblelost >= lostItems.length) {
+                lostBtn.style.display = "none";
+            } else {
+                lostBtn.style.display = "block";
+            }
+
+            if (visiblefound >= foundItems.length) {
+                foundBtn.style.display = "none";
+            } else {
+                foundBtn.style.display = "block";
+            }
+        }
+
+        function loadmorelost() {
+            visiblelost += 3;
+            renderitems();
+        }
+        function loadmorefound() {
+            visiblefound += 3;
+            renderitems();
+        }
+
+        loaditems();
+
+        function fullscreen(img) {
+            img.requestFullscreen();
+        }
+
+        // Popup display js
+        function openPopup(item) {
+
+            document.getElementById("p_image").src = "https://campus-connect-msu.runasp.net/" + item.image_path;
+            document.getElementById("p_item").innerText = item.item_name;
+            document.getElementById("p_category").innerText = item.category;
+            document.getElementById("p_desc").innerText = item.description;
+            document.getElementById("p_date").innerText = new Date(item.datetime).toLocaleString();
+            document.getElementById("p_location").innerText = item.location;
+            document.getElementById("p_contact").innerText = item.contact_information;
+            document.getElementById("popup").style.display = "block";
+        }
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+        window.addEventListener("click", function (e) {
+            const popup = document.getElementById("popup");
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+
+</html>

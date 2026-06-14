@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy & Sell Hub</title>
+    <link rel="shortcut icon" href="media/images/logo.jpg" type="image/x-icon">
+
+    <!-- font import css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            scroll-behavior: smooth;
+        }
+    </style>
+    <!-- content css -->
+    <style>
+        /* nav link show */
+        #desktop-nav>#desktop-nav-section>ul>li:nth-child(3) a {
+            color: #2563EB;
+        }
+
+        .content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .content h1 {
+            font-size: 4rem;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            color: white;
+        }
+
+        .content p {
+            font-size: 1.4rem;
+            width: 80vw;
+            margin: auto;
+            color: white;
+        }
+
+        /* Button css-------------------------------------------------------------------------- */
+        .button {
+            width: 60vw;
+            margin: 10vh auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .btn a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: clamp(0.1rem, 3.5vw, 1.2rem);
+            transition: 0.3s;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Hot categories */
+        .hot-category h3,
+        .listing h3 {
+            color: white;
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .hot-category p,
+        .listing p {
+            color: white;
+            text-align: center;
+        }
+
+        /* display-box css--------------------------------------------------------------------- */
+        .display-box {
+            width: 80vw;
+            margin: 5vh auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 5vw;
+        }
+
+        .box {
+            width: 40vw;
+            padding: 20px;
+            text-align: center;
+            background-color: #aeaeae;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 10px;
+        }
+
+        .box img {
+            width: 80px;
+            margin: 0px 0;
+        }
+
+        .box-title {
+            font-weight: 800;
+        }
+
+        /* listing css------------------------------------------------------------------------- */
+        .listing {
+            width: 100%;
+            background-color: #5d48ec;
+            padding: 20px 0;
+        }
+
+        .listing h3 {
+            margin: 20px;
+        }
+
+        .listing p {
+            margin: 20px;
+        }
+
+        .container-box {
+            width: 90vw;
+            margin: 10vh auto 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+            gap: 2vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        .container-box-item {
+            background-color: #d9d9d9;
+            padding: 1em;
+            margin-bottom: 5vh;
+            position: relative;
+            transition: 0.4s ease;
+            min-height: 350px;
+        }
+
+        .container-box-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .container-box-item-image {
+            height: 10vw;
+            display: block;
+            margin: auto;
+            transition: .3s;
+        }
+
+        .container-box-item-image:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+        .container-box-item-name {
+            font-size: large;
+            font-weight: 600;
+            padding: 1vh 0;
+        }
+
+        .container-box-item-description {
+            padding-bottom: 3vh;
+        }
+
+        .item-price {
+            position: absolute;
+            bottom: 60px;
+            color: #0ea144;
+            font-weight: 800;
+        }
+
+        .contact-seller-btn {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            cursor: pointer;
+            width: 90%;
+            margin: auto;
+            background-color: #2563eb;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px 0;
+            font-weight: 500;
+        }
+
+        .contact-seller-btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+
+        #loadmorebtn {
+            margin: auto;
+            min-width: 30vw;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .button {
+                gap: 2vh;
+                flex-direction: column;
+            }
+
+            .display-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container-box-item-image {
+                height: 15vh;
+            }
+
+            .container-box {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .container-box-item {
+                min-height: 35vh;
+            }
+
+            .see-more {
+                width: 50vw;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+            .container-box {
+                grid-template-columns: 1fr;
+                width: 60vw;
+                margin: auto;
+                margin-bottom: 5vh;
+            }
+
+            .container-box-item-name {
+                padding: 1vh 1vw;
+            }
+
+            .container-box-item-description {
+                padding: 0 1vw;
+            }
+
+            .item-price {
+                left: 4vw;
+            }
+
+            .contact-seller-btn {
+                position: absolute;
+                bottom: 15px;
+                left: 0;
+                right: 0;
+                cursor: pointer;
+                width: 90%;
+                margin: auto;
+                background-color: #2563eb;
+                text-align: center;
+                border-radius: 5px;
+                padding: 5px 0;
+                font-weight: 500;
+            }
+        }
+    </style>
+
+    <script src="load_header.js"></script>
+
+</head>
+
+<body>
+    <Header></Header>
+
+    <div class="content">
+        <h1>Buy & Sell Hub</h1>
+        <p>Your voice matters. Share suggestions, report issues, and help improve our campus community experience.</p>
+    </div>
+
+    <div class="button">
+        <button class="btn" id="post-item-btn"><a href="sell item.html">Post Item For sale</a></button>
+        <button class="btn"><a href="#items">Search Item</a></button>
+    </div>
+
+    <div class="hot-category">
+        <h3>Hot Categories</h3>
+        <p>Explore trending items from senior to juniors</p>
+    </div>
+
+    <div class="display-box">
+        <div class="box">
+            <img src="media/images/Buy_&_Sell_Hub.png" alt="">
+            <div class="box-title">TextBooks</div>
+            <div class="box-description">Save money or required readings</div>
+        </div>
+        <div class="box">
+            <img src="media/images/Buy_&_Sell_Hub.png" alt="">
+            <div class="box-title">Instruments</div>
+            <div class="box-description">Musicak gear and accessories</div>
+        </div>
+        <div class="box">
+            <img src="media/images/Buy_&_Sell_Hub.png" alt="">
+            <div class="box-title">Tech Gadgets</div>
+            <div class="box-description">Laptops, Chargers, and more</div>
+        </div>
+        <div class="box">
+            <img src="media/images/Buy_&_Sell_Hub.png" alt="">
+            <div class="box-title">Campus Merch</div>
+            <div class="box-description">School spirit essentials</div>
+        </div>
+    </div>
+
+    <div class="listing" id="items">
+        <h3>Latest Listings</h3>
+        <p>Fresh items posted by students in your campus community</p>
+
+        <div class="container-box"></div>
+        <button class="btn see-more" id="loadmorebtn" onclick="loadmoreitem()">See More &#709;</button>
+    </div>
+
+    <footer></footer>
+
+    <script src="auth.js"></script>
+    <script>
+        protectPage();
+
+        // Admin role hide
+        const role = localStorage.getItem("userRole");
+        const token = localStorage.getItem("jwtToken");
+
+        const post_btn = document.getElementById("post-item-btn");
+
+        if (role === "Admin") {
+            post_btn.style.display = "none";
+        }
+
+        let allitems = [];
+        let visibleitem = 4; // how many show per click
+
+        async function loaditems() {
+            const res = await fetch("https://campus-connect-msu.runasp.net/api/buysell", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+            const data = await res.json();
+
+            allitems = data; // store all
+            renderitems();
+        }
+
+        function renderitems() {
+            const containerbox = document.querySelector(".container-box");
+            const loaditemBtn = document.getElementById("loadmorebtn");
+
+            containerbox.innerHTML = "";
+
+
+            const visiblecard = allitems.slice(0, visibleitem);
+
+            visiblecard.forEach(item => {
+
+                const card = document.createElement("div");
+                card.className = "container-box-item";
+                card.dataset.id = item.product_id;
+
+                card.innerHTML = `
+                    <img src="https://campus-connect-msu.runasp.net/${item.image_path}" alt="item image" class="container-box-item-image" onclick = "fullscreen(this)">
+                    <div class="container-box-item-name">${item.item_title}</div>
+                    <div class="container-box-item-description">${item.description}</div>
+                    <div class="item-price">₹${item.price}</div>
+                    <button class="contact-seller-btn" onclick="redirectToContact(${item.product_id})">Contact Seller</button>`;
+                containerbox.appendChild(card);
+            });
+
+
+
+            if (visibleitem >= allitems.length) {
+                loaditemBtn.style.display = "none";
+            } else {
+                loaditemBtn.style.display = "block";
+            }
+        }
+
+        function loadmoreitem() {
+            visibleitem += 4;
+            renderitems();
+        }
+
+        function redirectToContact(id) {
+            window.location.href = "contact seller.html?id=" + id;
+        }
+
+        loaditems();
+
+        function fullscreen(img) {
+            img.requestFullscreen();
+        }
+    </script>
+</body>
+
+</html>

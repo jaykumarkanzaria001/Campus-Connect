@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Seller</title>
+    <link rel="shortcut icon" href="media/images/logo.jpg" type="image/x-icon">
+
+    <!-- font import css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            scroll-behavior: smooth;
+        }
+    </style>
+    <!-- header css -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        header {
+            margin: 0.8vw;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        nav ul li a.link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #0f172a;
+            /* background: #38bdf8; */
+            transition: 0.3s;
+        }
+
+        nav ul li a.link:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            background: #172133;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.5);
+        }
+
+        .btn a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* desktop nav style ---------------------------------------------------------------------*/
+        #desktop-nav {
+            min-height: 10vh;
+            border-radius: 35px;
+            background-color: #aeaeae;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        /* logo-selection ----------------------------------------------------------------------*/
+        #desktop-nav-logo {
+            height: 2.8em;
+            width: 2.8em;
+        }
+
+        #desktop-nav>#desktop-logo-section {
+            width: 40vw;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.5vw;
+            font-size: clamp(1rem, 2vw, 2rem);
+            font-weight: 600;
+            margin-left: 3vw;
+        }
+
+        /* nav-selection ----------------------------------------------------------------------*/
+        #desktop-nav>#desktop-nav-section>ul {
+            list-style-type: none;
+            width: 58vw;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 5vw;
+        }
+
+        #desktop-nav>#desktop-nav-section>ul>li>a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: clamp(0.1rem, 2vw, 1.2rem);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        #desktop-nav>#desktop-nav-section>ul>li:nth-child(2) a {
+            color: #2563EB;
+        }
+
+        /* mobile nav style ----------------------------------------------------------------------*/
+        #mobile-nav {
+            min-height: 20vh;
+            border-radius: 15px;
+            background-color: #aeaeae;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2vh;
+        }
+
+
+        /* logo-selection ----------------------------------------------------------------------*/
+        #mobile-nav-logo {
+            height: 6rem;
+            width: 6rem;
+        }
+
+        #mobile-nav>#mobile-logo-section {
+            width: 40vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.5vw;
+            font-size: clamp(0.2rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-left: 3vw;
+        }
+
+        /* nav-selection ----------------------------------------------------------------------*/
+        #mobile-nav>#mobile-nav-section>div>img {
+            height: 1rem;
+            width: 1rem;
+            margin-right: 4vw;
+        }
+
+        #mobile-nav>#mobile-nav-section>ul {
+            list-style-type: none;
+            width: 40vw;
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #mobile-nav>#mobile-nav-section>ul>li {
+            position: relative;
+        }
+
+        #mobile-nav>#mobile-nav-section>ul>li>a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: clamp(0.4rem, 3.8vw, 1.2rem);
+            display: block;
+        }
+
+        #mobile-nav>#mobile-nav-section>ul>li>a.link::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #0f172a;
+            /* background: #38bdf8; */
+            transition: 0.3s;
+        }
+
+
+        #mobile-nav>#mobile-nav-section>ul>li>a.link:hover::after {
+            width: 100%;
+        }
+
+        #mobile-nav>#mobile-nav-section>ul>li:nth-child(2) a {
+            color: #2563EB;
+        }
+
+        @media only screen and (max-width : 500px) {
+            #desktop-nav {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width : 500px) {
+            #mobile-nav {
+                display: none;
+            }
+        }
+    </style>
+    <!-- content css -->
+    <style>
+        .contact-seller-heading {
+            width: 80vw;
+            margin: 40px auto;
+            color: white;
+            font-size: 3em;
+        }
+
+        .seller-info {
+            width: 80vw;
+            background-color: #d9d9d9;
+            margin: auto;
+            border-radius: 20px;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .seller-info h3 {
+            margin: 20px 10px;
+            font-size: 2em;
+        }
+
+        .seller-info p {
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+
+        .info {
+            margin: 0px 40px;
+        }
+
+        .item-info {
+            width: 80vw;
+            color: white;
+            margin: 50px auto;
+            border-radius: 20px;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .item-info img {
+            height: 13em;
+            /* width: 13em; */
+            float: left;
+            margin-right: 2vw;
+            transition: .3s;
+        }
+
+        .item-info img:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+        .item-info h3 {
+            margin: 10px 0;
+            font-size: 2em;
+        }
+
+        .item-info p {
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+
+        .item-details {
+            margin: 40px 200px;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .seller-info h3 {
+                margin: 20px 10px;
+                font-size: 1.5em;
+            }
+
+            .seller-info p {
+                margin: 10px 0;
+                font-size: 1.1em;
+            }
+
+            .item-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .item-info img {
+                float: none;
+                margin-right: 0;
+                width: 100%;
+            }
+
+            .item-details {
+                margin: auto;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <Header>
+        <nav id="desktop-nav">
+            <div id="desktop-logo-section">
+                <img src="media/images/logo.jpg" alt="Logo" id="desktop-nav-logo">
+                <span>CAMPUS CONNECT</span>
+            </div>
+            <div id="desktop-nav-section">
+                <ul>
+                    <li><a href="index.html" class="link">Home</a></li>
+                    <li><a href="" class="link">Contact Seller</a></li>
+                </ul>
+            </div>
+        </nav>
+        <nav id="mobile-nav">
+            <div id="mobile-logo-section">
+                <img src="media/images/logo.jpg" alt="Logo" id="mobile-nav-logo">
+                <span>CAMPUS CONNECT</span>
+            </div>
+            <div id="mobile-nav-section">
+                <div>
+                    <img src="media/images/hamburger.png" alt="button" onclick="showmenu()">
+                </div>
+            </div>
+        </nav>
+    </Header>
+
+    <h1 class="contact-seller-heading">Contact Seller</h1>
+    <div class="seller-info">
+        <h3>Seller Information</h3>
+        <div class="info">
+            <p id="seller_name">Name of seller</p>
+            <p id="seller_no">1234567890</p>
+            <p id="seller_email">Email: seller@gmail.com</p>
+        </div>
+    </div>
+
+    <div class="item-info">
+        <h3>Item Details</h3>
+        <img src="media/images/Buy_&_Sell_Hub.png" alt="item photo" id="item_image" onclick="fullscreen(this)">
+        <div class="item-details">
+            <p id="item_name">Name of Item</p>
+            <p id="item_description">Item description</p>
+            <p id="item_price">price</p>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="auth.js"></script>
+    <script>
+        protectPage();
+        function showmenu() {
+            document.querySelector("#mobile-nav-section").innerHTML = `<ul>
+                    <li><a href="index.html" class="link">Home</a></li>
+                    <li><a href="contact seller.html" class="link">Contact seller</a></li>
+                </ul>`;
+        }
+
+
+        // Admin role hide
+        const role = localStorage.getItem("userRole");
+        const token = localStorage.getItem("jwtToken");
+
+        async function loadData(id) {
+            const res = await fetch("https://campus-connect-msu.runasp.net/api/buysell", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+            const data = await res.json();
+
+            const item = data.find(x => x.product_id == id);
+
+            document.getElementById("seller_name").innerText = item.name;
+            document.getElementById("seller_no").innerText = item.mobile_no;
+            document.getElementById("seller_email").innerText = item.email;
+            document.getElementById("item_image").src = "https://campus-connect-msu.runasp.net/" + item.image_path;
+            document.getElementById("item_name").innerText = item.item_title;
+            document.getElementById("item_description").innerText = item.description;
+            document.getElementById("item_price").innerText = "₹" + item.price;
+        }
+
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+
+            if (id) {
+                loadData(id);
+            }
+        };
+
+        function fullscreen(img) {
+            img.requestFullscreen();
+        }
+    </script>
+</body>
+
+</html>

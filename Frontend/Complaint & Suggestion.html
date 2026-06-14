@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint & suggestion Portal</title>
+    <link rel="shortcut icon" href="media/images/logo.jpg" type="image/x-icon">
+
+    <!-- font import css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            scroll-behavior: smooth;
+        }
+    </style>
+    <!-- content css -->
+    <style>
+        /* nav link show */
+        #desktop-nav>#desktop-nav-section>ul>li:nth-child(4) a {
+            color: #2563EB;
+        }
+
+        .content {
+            display: block;
+            text-align: center;
+            width: 80vw;
+            margin: 5vh auto;
+        }
+
+        .content h1 {
+            font-size: 4rem;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            color: white;
+        }
+
+        .content p {
+            font-size: 1.4rem;
+            width: 80vw;
+            margin: auto;
+            color: white;
+        }
+
+        /* Button css-------------------------------------------------------------------------- */
+        .button {
+            width: 60vw;
+            margin: 10vh auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .btn a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: clamp(0.1rem, 3.5vw, 1.2rem);
+            transition: 0.3s;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* display-box css--------------------------------------------------------------------- */
+        .display-box {
+            width: 51vw;
+            margin: 5vh auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 5vw;
+        }
+
+        .box {
+            width: 20vw;
+            padding: 20px;
+            text-align: center;
+            background-color: #aeaeae;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 10px;
+        }
+
+        .box img {
+            width: 80px;
+            margin: 20px 0;
+        }
+
+        .box-title {
+            font-weight: 800;
+        }
+
+        /* complaint section css-----------------------------------------------------------------*/
+        .complaint-section {
+            width: 100%;
+            /* background-color: #0f172a; */
+            background-color: #4e50ec;
+            padding: 5vh 0;
+        }
+
+
+        .complaint {
+            width: 60vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .complaint h2 {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 500;
+            margin: 3vh auto;
+        }
+
+        .complaint p {
+            text-align: center;
+            font-size: 1.1em;
+            margin: 3vh auto;
+        }
+
+        .complaint form {
+            display: flex;
+            flex-direction: column;
+            width: 50vw;
+            margin: auto;
+        }
+
+        .complaint select,
+        input {
+            padding: 10px 5px;
+            margin: 5px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .complaint form .form-button {
+            width: 50vw;
+            margin: 5vh auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .form-grp {
+            display: flex;
+            flex-direction: column;
+            width: 50vw;
+            margin: 10px 0;
+        }
+
+        .form-grp-horizontal {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        /* Recent complaint css----------------------------------------------------------------*/
+        .recent-complaint {
+            width: 60vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        .recent-complaint-head {
+            text-align: center;
+            color: white;
+        }
+
+        .recent-complaint>.recent-complaint-head>h2 {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 500;
+            margin: 3vh auto;
+        }
+
+        .recent-complaint>.recent-complaint-head>p {
+            font-size: 1.1em;
+            margin: 3vh auto;
+        }
+
+        .recent-complaint-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3vh;
+            margin: 5vh;
+        }
+
+        .complaint-card {
+            width: 15vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            align-items: flex-start;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .complaint-img {
+            height: 100px;
+            object-fit: contain;
+            margin: auto;
+            transition: .3s;
+        }
+
+        .complaint-img:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+        .complaint-info h4 {
+            margin: 0;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .complaint-info p {
+            margin: 6px 0;
+            color: #555;
+        }
+
+        .complaint-info small {
+            color: #888;
+        }
+
+        .approve-btn {
+            width: 100%;
+        }
+
+        .see-more {
+            margin: 5vh auto;
+            width: 30vw;
+        }
+
+        .min-width {
+            min-width: 25vw;
+        }
+
+        /* for mobile */
+        @media only screen and (max-width:1200px) {
+            .recent-complaint-box {
+                grid-template-columns: 1fr;
+                gap: 2vh;
+                margin: auto;
+            }
+
+            .complaint-card {
+                width: 50vw;
+            }
+        }
+
+        @media only screen and (max-width:1000px) {
+            .content h1 {
+                font-size: 3em;
+            }
+
+            .content p {
+                font-size: 1.3em;
+            }
+
+            .button {
+                display: flex;
+                flex-direction: column;
+                gap: 2vh;
+            }
+
+            .display-box {
+                flex-direction: column;
+                align-items: center;
+                gap: 2vh;
+            }
+
+            .box {
+                width: 40vw;
+            }
+
+            .complaint,
+            .complaint-form,
+            .complaint form {
+                width: 80vw;
+                align-items: center;
+            }
+
+            .complaint-head h2 {
+                font-size: 2em;
+            }
+
+            .form-grp {
+                width: 70vw;
+            }
+
+            .form-grp-horizontal {
+                flex-direction: column;
+                width: 70vw;
+            }
+
+            form input,
+            select {
+                width: 70vw;
+                box-sizing: border-box;
+            }
+
+            .form-button {
+                flex-direction: column;
+                gap: 2vh;
+            }
+
+            .form-button>.btn {
+                font-size: 1em;
+            }
+
+            .recent-complaint .recent-complaint-head h2 {
+                font-size: 2em;
+            }
+
+            .complaint-card {
+                width: 50vw;
+            }
+
+            .see-more {
+                width: 50vw;
+            }
+        }
+    </style>
+
+    <script src="load_header.js"></script>
+
+</head>
+
+<body>
+    <Header></Header>
+
+    <div class="content">
+        <h1>Complaint & Suggestion Portal</h1>
+        <p>Your voice matters. Share suggestions, report issues, and help improve our campus community experience.</p>
+    </div>
+
+    <div class="button">
+        <button class="btn min-width" id="submit-complaint"><a href="#complaint">Submit Complaint</a></button>
+        <button class="btn min-width"><a href="#recent-complaint">Browse Recent Complaints</a></button>
+    </div>
+
+    <div class="display-box">
+        <div class="box">
+            <img src="media/images/complaint.png" alt="">
+            <div class="box-title">Complaints</div>
+            <div class="box-description">Report maintenance issues, safety concerns, or campus problems</div>
+        </div>
+        <div class="box">
+            <img src="media/images/suggestion.png" alt="">
+            <div class="box-title">Suggestions</div>
+            <div class="box-description">Share ideas to enhance campus facilities, events, and services.</div>
+        </div>
+    </div>
+
+    <div class="complaint-section" id="complaint">
+        <div class="complaint">
+            <div class="complaint-head">
+                <h2>Submit your complaint</h2>
+                <p>Help us improve the campus experience for everyone</p>
+            </div>
+            <div class="complaint-form">
+                <form id="complaintForm">
+                    <div class="form-grp-horizontal">
+                        <div class="form-grp">
+                            <label for="response-type">Response Type</label>
+                            <select name="response_type" id="response-type">
+                                <option value="" hidden selected>Select type...</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="suggestion">Suggestion</option>
+                            </select>
+                        </div>
+                        <div class="form-grp">
+                            <label for="location">location</label>
+                            <input type="text" name="location" id="location" placeholder="Where is this issue located?">
+                        </div>
+                    </div>
+                    <div class="form-grp">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description"
+                            placeholder="Please describe your feedback in detail...">
+                    </div>
+
+                    <input type="text" value="Pending" name="status" hidden>
+
+                    <div class="form-grp">
+                        <label for="email">Contact Email</label>
+                        <input type="text" name="contact_email" id="email" placeholder="Your email address">
+                    </div>
+                    <div class="form-grp">
+                        <label for="image">Upload Photo</label>
+                        <input type="file" name="image_path" id="image">
+                    </div>
+
+                    <div class="form-button">
+                        <button type="submit" class="btn min-width">Submit Response</button>
+                        <button type="reset" class="btn min-width">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="recent-complaint" id="recent-complaint">
+        <div class="recent-complaint-head">
+            <h2>Recent Complaints</h2>
+            <p>Help us improve the campus experience for everyone</p>
+        </div>
+
+        <div class="recent-complaint-box"></div>
+        <button class="btn see-more">See More &#709; </button>
+    </div>
+
+    <footer></footer>
+
+    <script src="auth.js"></script>
+    <script>
+        protectPage();
+
+        const role = localStorage.getItem("userRole");
+        const token = localStorage.getItem("jwtToken");
+
+        // submit complaint or suggestion
+        document.getElementById("complaintForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const form = this;
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://campus-connect-msu.runasp.net/api/complaintsuggestion/report", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                alert(result.message);
+
+                form.reset();
+
+            } catch (err) {
+                console.error(err);
+                alert("Error submitting complaint");
+            }
+        });
+
+        // approve complaint function
+        async function approve_complaint(btn) {
+            const card = btn.closest(".complaint-card");
+            const statusEl = card.querySelector(".status");
+            const id = card.dataset.id;
+
+            const newStatus = confirm("Approve this complaint?")
+                ? "Approved"
+                : "Rejected";
+
+            const url = `https://campus-connect-msu.runasp.net/api/complaintsuggestion/status?id=${id}&status=${newStatus}`;
+
+            try {
+                const res = await fetch(url, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                });
+
+                console.log("Status:", res.status);
+                console.log(await res.text());
+
+                if (!res.ok) {
+                    alert("Database update failed");
+                    return;
+                }
+
+                statusEl.innerHTML = newStatus;
+                btn.style.visibility = "hidden";
+
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+
+        // load complaint function
+        let allComplaints = [];
+        let visibleCount = 3; // how many show per click
+
+        async function loadComplaints() {
+            const res = await fetch("https://campus-connect-msu.runasp.net/api/complaintsuggestion", {
+                method: "GET",
+                headers: {
+                    "Authorization": "bearer " + token
+                }
+            });
+
+            if (!res.ok) {
+                console.log("Error status:", res.status);
+                alert("Unauthorized. Please login again.");
+                return;
+            }
+
+            const data = await res.json();
+
+            allComplaints = data; // store all
+            renderComplaints();
+        }
+
+        function renderComplaints() {
+            const box = document.querySelector(".recent-complaint-box");
+            const btn = document.querySelector(".see-more");
+
+            box.innerHTML = "";
+
+            const visibleItems = allComplaints.slice(0, visibleCount);
+
+            visibleItems.forEach(item => {
+
+                const card = document.createElement("div");
+                card.className = "complaint-card";
+                card.dataset.id = item.report_id;
+
+                card.innerHTML = `
+                    <div class="flex">
+                        <img src="${item.image_path}" onclick="fullscreen(this)" class="complaint-img">
+                        <div class="complaint-info">
+                            <h4>${item.response_type}</h4>
+                            <p>${item.description}</p>
+                            <small>${item.location}</small>
+                        </div>
+                    </div>
+                    <div class="status">${item.status}</div>
+                    <button class="btn approve-btn" onclick="approve_complaint(this)">Approve</button>`;
+
+                const approveBtn = card.querySelector(".approve-btn");
+                const submit_btn = document.getElementById("submit-complaint");
+                const complaint_section = document.getElementById("complaint");
+
+                if (role === "Student") {
+                    approveBtn.style.visibility = "hidden";
+                } else {
+                    submit_btn.style.display = "none";
+                    complaint_section.style.display = "none";
+                }
+
+                if (item.status === "Approved" || item.status === "Rejected") {
+                    approveBtn.style.visibility = "hidden";
+                }
+
+                box.appendChild(card);
+            });
+
+            // hide button when all shown
+            if (visibleCount >= allComplaints.length) {
+                btn.style.display = "none";
+            }
+        }
+
+        document.querySelector(".see-more").addEventListener("click", () => {
+            visibleCount += 3;
+            renderComplaints();
+        });
+
+        loadComplaints();
+
+        function fullscreen(img) {
+            img.requestFullscreen();
+        }
+    </script>
+</body>
+
+</html>
